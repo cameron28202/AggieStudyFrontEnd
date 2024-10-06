@@ -1,0 +1,38 @@
+.go-back-button {
+    display: flex;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #500000; 
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.go-back-button:hover {
+    background-color: #3d0000; 
+}
+
+.go-back-button:active {
+    transform: scale(0.98);
+}
+
+.go-back-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .go-back-button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+    
+    .go-back-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+    }
+}
