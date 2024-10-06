@@ -11,7 +11,7 @@ export const getCourseById = (id) => {
 };
 
 export const getCoursesBySubject = (subject) => {
-    return axios.get(`${API_BASE_URL}/subject/${subjectt}`);
+    return axios.get(`${API_BASE_URL}/subject/${subject}`);
 };
 
 export const addCourse = (course) => {
