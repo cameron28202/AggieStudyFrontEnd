@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import QuestionBar from "../components/Question/QuestionBar";
 import GoBackButton from "../components/Utils/GoBackButton";
 import ClearDataButton from '../components/Utils/ClearDataButton';
+import { clearUserProgress, saveUserProgress } from '../components/Utils/LocalStorageService';
 
 const Exam = () => {
 
@@ -12,9 +13,6 @@ const Exam = () => {
     const { examId } = useParams();
     const { questions, loading, error } = useQuestions(examId);
 
-    const handleRestartExam = () => {
-
-    }
 
     if (loading) {
         return <div className="loading">
@@ -49,6 +47,9 @@ const Exam = () => {
                 <QuestionBar
                     questions={questions}
                     examId={examId}
+                />
+                <ClearDataButton
+                    handleRestartExam={clearUserProgress()}
                 />
                 <GoBackButton/>
             </section>
