@@ -38,7 +38,7 @@ const Question = () => {
             setOpenAnswer("");
             setSubmitted(false);
         }
-    }, [questionId, question.openEnded]);
+    }, [questionId, question]);
 
     const handleSubmit = () => {
         if(question.openEnded){

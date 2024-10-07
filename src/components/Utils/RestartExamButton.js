@@ -1,6 +1,6 @@
 import React from "react";
 
-const ClearDataButton = (handleRestartExam) => {
+const RestartExamButton = (handleRestartExam) => {
     return (
         <button
             className="go-back-button"
@@ -15,4 +15,4 @@ const ClearDataButton = (handleRestartExam) => {
     );
 };
 
-export default ClearDataButton;
+export default RestartExamButton;
