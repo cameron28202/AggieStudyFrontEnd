@@ -1,7 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import './ExamList.css'
-import GoBackButton from "../Utils/GoBackButton";
 
 const ExamList = ({exams}) => {
     if (!exams || exams.length === 0) {
@@ -19,9 +18,7 @@ const ExamList = ({exams}) => {
                 </li>
             ))}
         </div>
-
     );
-
 }
 
 export default ExamList;

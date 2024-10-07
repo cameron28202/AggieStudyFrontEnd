@@ -1,5 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import './ResourceList.css'
 
 const LinkList = ({links}) => {
 
@@ -10,7 +11,7 @@ const LinkList = ({links}) => {
     return (
         <ul className="links-list">
             {links.map(link => (
-                <li key={link.id} className="resource-item">
+                <li key={link.id} className="resource-list-item">
                     <NavLink to={`${link.url}`}>
                         <h1>{link.type}</h1>
                         <p>{link.description}</p>

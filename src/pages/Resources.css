@@ -1,4 +1,4 @@
-.exam-list {
+.resource-list {
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
@@ -6,7 +6,7 @@
     border-radius: 8px;
 }
 
-.exam-list-title {
+.resource-list-title {
     color: #500000;
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -30,7 +30,7 @@
     border: 1px solid #d32f2f;
 }
 
-.exam-item {
+.resource-item {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
@@ -39,22 +39,22 @@
     transition: all 0.3s ease;
 }
 
-.exam-item:hover {
+.resource-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.exam-item h3 {
+.resource-item h3 {
     color: #500000;
     margin-bottom: 0.5rem;
 }
 
-.exam-item p {
+.resource-item p {
     color: #666;
     font-size: 0.9rem;
 }
 
-.exam-link {
+.resource-link {
     display: inline-block;
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
@@ -65,17 +65,17 @@
     transition: background-color 0.3s ease;
 }
 
-.exam-link:hover {
+.resource-link:hover {
     background-color: #3d0000;
 }
 
 @media (max-width: 768px) {
-    .exam-list {
+    .resource-list {
         padding: 1rem;
         margin: 1rem;
     }
 
-    .exam-list-title {
+    .resource-list-title {
         font-size: 1.5rem;
     }
 }

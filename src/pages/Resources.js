@@ -1,8 +1,9 @@
 import React from "react";
 import useLinks from "../hooks/useExams";
 import { useParams } from "react-router-dom";
-import LinkList from "../components/Resources/LinkList";
+import LinkList from "../components/Resources/ResourceList";
 import GoBackButton from "../components/Utils/GoBackButton";
+import './Resources.css'
 
 
 const Links = () => {
@@ -18,7 +19,7 @@ const Links = () => {
 
     return (
         <div>
-            <div className="exam-list">
+            <div className="resource-list">
                 <h2 className="resource-list-title">Resources for class {classId}:</h2>
                 <LinkList
                     links={links}

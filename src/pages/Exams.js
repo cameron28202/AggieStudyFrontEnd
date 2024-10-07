@@ -17,14 +17,12 @@ const Exams = () => {
     if(error) return ( <div className="error">Error loading exams: {error}</div>)
 
     return (
-        <div>
-            <div className="exam-list">
+        <div className="exam-list">
             <h2 className="exam-list-title">Exams for class {classId}:</h2>
             <ExamList
                 exams={exams}
             />
-                <GoBackButton/>
-            </div>
+            <GoBackButton/>
         </div>
     )
 }

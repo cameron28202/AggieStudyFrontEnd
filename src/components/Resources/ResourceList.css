@@ -1,14 +1,14 @@
-.exam-list {
+.resource-list {
     list-style-type: none;
     padding: 1rem;
     background-color: #ffffff; 
 }
 
-.exam-list-item {
+.resource-list-item {
     margin-bottom: 0.5rem;
 }
 
-.exam-list-item a {
+.resource-list-item a {
     display: block;
     padding: 1rem;
     background-color: #f0f0f0;
