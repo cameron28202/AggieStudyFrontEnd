@@ -1,6 +1,5 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import GoBackButton from "../Utils/GoBackButton";
 
 const LinkList = ({links}) => {
 

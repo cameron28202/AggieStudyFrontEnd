@@ -3,10 +3,9 @@ import ExamList from "../components/Resources/ExamList";
 import useExams from "../hooks/useExams";
 import { useParams } from "react-router-dom";
 import './Exams.css'
-import GoBackButton from "../components/Utils/GoBackButton";
 
 
-const Exams = ({}) => {
+const Exams = () => {
 
     const { classId } = useParams();
 

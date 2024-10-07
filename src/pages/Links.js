@@ -5,7 +5,7 @@ import LinkList from "../components/Resources/LinkList";
 import GoBackButton from "../components/Utils/GoBackButton";
 
 
-const Links = ({}) => {
+const Links = () => {
 
     const { classId } = useParams();
 

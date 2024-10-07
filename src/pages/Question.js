@@ -25,7 +25,12 @@ const Question = () => {
     useEffect(() => {
         const existingData = getUserProgress(questionId)
         if(existingData){
-            setSelectedAnswer(existingData)
+            if(question.openEnded) {
+                setOpenAnswer(existingData);
+            } 
+            else{
+            setSelectedAnswer(existingData);
+            }
             setSubmitted(true);
         }
         else{
@@ -33,7 +38,7 @@ const Question = () => {
             setOpenAnswer("");
             setSubmitted(false);
         }
-    }, [questionId]);
+    }, [questionId, question.openEnded]);
 
     const handleSubmit = () => {
         if(question.openEnded){

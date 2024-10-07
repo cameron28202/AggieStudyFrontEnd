@@ -1,7 +1,7 @@
 // src/hooks/useCourseSearch.js
 import { useState, useEffect, useCallback } from 'react';
 import { searchCourses } from '../api/courseService';
-import { debounce } from 'lodash'; // Make sure to install lodash
+import { debounce } from 'lodash';
 
 const useCourseSearch = (initialQuery = '') => {
     const [query, setQuery] = useState(initialQuery);
