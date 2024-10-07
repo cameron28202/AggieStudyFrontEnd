@@ -19,7 +19,7 @@ const Links = () => {
     return (
         <div>
             <div className="exam-list">
-                <h2>Resources for class {classId}:</h2>
+                <h2 className="resource-list-title">Resources for class {classId}:</h2>
                 <LinkList
                     links={links}
                 />

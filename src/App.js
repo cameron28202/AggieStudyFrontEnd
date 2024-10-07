@@ -8,8 +8,9 @@ import Exam from "./pages/Exam";
 import Exams from "./pages/Exams"
 import Question from "./pages/Question"
 import KaTeXWrapper from './components/Utils/KaTeXWrapper';
-import Links from './pages/Links';
+import Links from './pages/Resources';
 import Footer from './components/Footer/Footer';
+import './App.css'
 
 const App = () => {
     return (

@@ -1,28 +1,51 @@
-import React from "react";
-import Resources from "../Resources/Resources";
+import React, {useState} from 'react';
+import { NavLink } from 'react-router-dom';
+import './CourseList.css';
 
-const CourseItem = ({ course, query, isSelected, onClick }) => {
-    
-    const highlightQuery = (text) => {
-        if (!query) return text;
-        const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const parts = text.split(new RegExp(`(${escapedQuery})`, 'gi'));
-        return <span>{parts.map((part, i) =>
-            part.toLowerCase() === query.toLowerCase() ? <b key={i}>{part}</b> : part
-        )}</span>;
-    };
+const CourseItem = ({ course, isSelected, onClick }) => {
+
+    const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <li>
-            <div className="course-item" onClick={onClick}>
-                {highlightQuery(`${course.id} (${course.name})`)}
-            </div>
-            <div className={`resources-dropdown ${isSelected ? 'expanded' : ''}`}>
-                <Resources classId={course.id} />
-            </div>
-        </li>
-    )
+        <li 
+            className={`course-item`}
+            onClick={onClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {!isHovered && (
+                <div>
+                    <div className="course-item-header">
+                        {course.id}
+                    </div>
+                    <div className="course-item-name">
+                        {course.description}
+                    </div>
+                </div>
+            )}
 
-}
+            {isHovered && (
+                <div className="course-item-buttoms">
+                                        <NavLink 
+                        to={`/courses/${course.id}/exams`} 
+                        className={({ isActive }) => 
+                            isActive ? "course-button active" : "course-button"
+                        }
+                    >
+                        Exams
+                    </NavLink>
+                    <NavLink 
+                        to={`/courses/${course.id}/links`} 
+                        className={({ isActive }) => 
+                            isActive ? "course-button active" : "course-button"
+                        }
+                    >
+                        Resources
+                    </NavLink>
+                </div>
+            )}
+        </li>
+    );
+};
 
 export default CourseItem;
