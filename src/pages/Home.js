@@ -1,9 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
+const useIntersectionObserver = (options) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    }, options);
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [ref, options]);
+
+  return [ref, isVisible];
+};
+
 const Home = () => {
     const [activeFeature, setActiveFeature] = useState(null);
+    const [heroRef, heroVisible] = useIntersectionObserver({ threshold: 0.1 });
+    const [statsRef, statsVisible] = useIntersectionObserver({ threshold: 0.1 });
+    const [featuresRef, featuresVisible] = useIntersectionObserver({ threshold: 0.1 });
 
     const features = [
         {
@@ -25,13 +51,13 @@ const Home = () => {
 
     return (
         <div className="home">
-            <section className="hero">
-                <h1>AggieStudy</h1>
-                <p className="mission">The ultimate study companion for Texas A&M students</p>
+            <section ref={heroRef} className={`hero ${heroVisible ? 'fade-in' : ''}`}>
+                <h1>Welcome to AggieStudy</h1>
+                <p className="mission">Your ultimate companion for academic excellence</p>
                 <Link to="/courses" className="cta-button">Get Started</Link>
             </section>
 
-            <section className="stats">
+            <section ref={statsRef} className={`stats ${statsVisible ? 'fade-in' : ''}`}>
                 <div className="stat-item">
                     <h2>1,000+</h2>
                     <p>Study Questions</p>
@@ -46,7 +72,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="features">
+            <section ref={featuresRef} className={`features ${featuresVisible ? 'fade-in' : ''}`}>
                 <div className="features-container">
                     {features.map((feature, index) => (
                         <div

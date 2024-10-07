@@ -9,7 +9,7 @@
 
 .courses-title, .course-search-title {
     font-size: 2.5rem;
-    color: #500000;
+    color: rgba(80, 0, 0, 0.9);
     text-align: center;
     margin-bottom: 1rem;
 }

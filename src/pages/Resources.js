@@ -6,7 +6,7 @@ import GoBackButton from "../components/Utils/GoBackButton";
 import './Resources.css'
 
 
-const Links = () => {
+const Resources = () => {
 
     const { classId } = useParams();
 
@@ -30,4 +30,4 @@ const Links = () => {
     )
 }
 
-export default Links;
+export default Resources;
