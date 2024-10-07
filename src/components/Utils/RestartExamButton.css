@@ -1,0 +1,21 @@
+.restart-exam-button {
+    display: flex;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #500000; 
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.restart-exam-button:hover {
+    background-color: #3d0000; 
+}
+
+.restart-exam-button:active {
+    transform: scale(0.98);
+}
+
+
