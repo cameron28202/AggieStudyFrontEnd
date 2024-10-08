@@ -52,8 +52,8 @@ const Home = () => {
     return (
         <div className="home">
             <section ref={heroRef} className={`hero ${heroVisible ? 'fade-in' : ''}`}>
-                <h1>Welcome to AggieStudy</h1>
-                <p className="mission">Your ultimate companion for academic excellence</p>
+                <h1>Welcome to AggieStudy!</h1>
+                <p className="mission">The one stop shop for Texas A&M students to study</p>
                 <Link to="/courses" className="cta-button">Get Started</Link>
             </section>
 

@@ -1,10 +1,9 @@
 .home {
-    font-family: 'Arial', sans-serif;
     color: #333;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 
 .hero, .stats, .features {
@@ -21,7 +20,7 @@
 }
 
 .hero {
-    background-color: rgba(80, 0, 0, 0.9);
+    position: relative;
     color: white;
     padding: 8rem 2rem;
     display: flex;
@@ -29,6 +28,37 @@
     justify-content: center;
     align-items: center;
     min-height: 50vh;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("campus.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(80, 0, 0, 0.6); 
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
