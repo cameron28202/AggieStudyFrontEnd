@@ -23,25 +23,27 @@ const Question = () => {
     const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
-        const existingData = getUserProgress(questionId)
-        if(existingData){
-            if(question.openEnded) {
-                setOpenAnswer(existingData);
+        if(question){
+            const existingData = getUserProgress(questionId);
+            if(existingData){
+                if(question.openEnded){
+                    setOpenAnswer(existingData);
+                } 
+                else{
+                    setSelectedAnswer(existingData);
+                }
+                setSubmitted(true);
             } 
             else{
-            setSelectedAnswer(existingData);
+                setSelectedAnswer(null);
+                setOpenAnswer("");
+                setSubmitted(false);
             }
-            setSubmitted(true);
-        }
-        else{
-            setSelectedAnswer(null);
-            setOpenAnswer("");
-            setSubmitted(false);
         }
     }, [questionId, question]);
 
     const handleSubmit = () => {
-        if(question.openEnded){
+        if(question.isOpenEnded){
             if(openAnswer === "") return;
             saveUserProgress(questionId, openAnswer)
         }
