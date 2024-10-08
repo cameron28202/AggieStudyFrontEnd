@@ -3,27 +3,28 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 const useIntersectionObserver = (options) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsVisible(entry.isIntersecting);
-    }, options);
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef(null);
+  
+    useEffect(() => {
+      const currentRef = ref.current; 
+      const observer = new IntersectionObserver(([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      }, options);
+  
+      if (currentRef) {
+        observer.observe(currentRef);
       }
-    };
-  }, [ref, options]);
-
-  return [ref, isVisible];
-};
+  
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, [options]); 
+  
+    return [ref, isVisible];
+  };
 
 const Home = () => {
     const [activeFeature, setActiveFeature] = useState(null);

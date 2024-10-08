@@ -9,9 +9,9 @@ const Navbar = () => {
                 <NavLink to="/" exact={true} className="navbar-brand-link">AggieStudy</NavLink>
             </div>
             <ul className="navbar-links">
-                <li><NavLink to="/" exact={true} activeClassName="active" className="navbar-link">Home</NavLink></li>
-                <li><NavLink to="/courses" activeClassName="active" className="navbar-link">Courses</NavLink></li>
-                <li><NavLink to="/about" activeClassName="active"className="navbar-link">About</NavLink></li>
+                <li><NavLink to="/" exact={true} className="navbar-link">Home</NavLink></li>
+                <li><NavLink to="/courses" className="navbar-link">Courses</NavLink></li>
+                <li><NavLink to="/about" className="navbar-link">About</NavLink></li>
             </ul>
         </nav>
     );

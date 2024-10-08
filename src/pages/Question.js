@@ -56,15 +56,15 @@ const Question = () => {
     };
 
 
-    if (loading) {
+    if(loading){
         return <div className="question-loading">Loading question...</div>;
     }
 
-    if (error) {
+    if(error){
         return <div className="question-error">{error}</div>;
     }
 
-    if (!question) {
+    if(!question){
         return <div className="question-not-found">Question not found. You probably have the wrong question ID!</div>;
     }
 
