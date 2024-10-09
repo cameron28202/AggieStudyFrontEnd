@@ -8,7 +8,7 @@ import Exam from "./pages/Exam";
 import Exams from "./pages/Exams"
 import Question from "./pages/Question"
 import KaTeXWrapper from './components/Utils/KaTeXWrapper';
-import Links from './pages/Resources';
+import Resources from './pages/Resources';
 import Footer from './components/Footer/Footer';
 import './App.css'
 
@@ -24,7 +24,7 @@ const App = () => {
                         <Route path="/courses" element={<Courses />} />
                         <Route path="/about" element={<About/>}/>
                         <Route path="/courses/:classId/exams" element={<Exams/>}/>
-                        <Route path="/courses/:classId/links" element={<Links/>}/>
+                        <Route path="/courses/:classId/resources" element={<Resources/>}/>
                         <Route path="/courses/:classId/exams/:examId" element={<Exam/>}/>
                         <Route path="/courses/:classId/exams/:examId/questions/:questionId" element={<Question/>}/>
                     </Routes>
