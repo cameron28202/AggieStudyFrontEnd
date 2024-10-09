@@ -29,6 +29,7 @@
     align-items: center;
     min-height: 50vh;
     overflow: hidden;
+    text-shadow: rgb(248, 248, 245) 1px 0 10px;
 }
 
 .hero::before {

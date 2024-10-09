@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import './QuestionBar.css';
 import { getUserProgress } from "../Utils/LocalStorageService";
 
-const QuestionBar = ({ currentQuestion, questions, examId }) => {
+const QuestionBar = ({questions, examId }) => {
     const { classId } = useParams();
     
     const getQuestionStatus = (questionId) => {
@@ -20,10 +20,11 @@ const QuestionBar = ({ currentQuestion, questions, examId }) => {
                     <NavLink
                         key={question.id}
                         to={`/courses/${classId}/exams/${examId}/questions/${question.id}`}
-                        className={`question-link 
-                            ${question.id === currentQuestion ? "question-link-active" : ""}
-                            ${status === 'correct' ? "question-correct" : ""}
-                            ${status === 'incorrect' ? "question-incorrect" : ""}`}
+                        className={({ isActive }) => 
+                            `question-link 
+                            ${isActive ? "question-link-active" : ""}
+                            ${status}`
+                        }
                     >
                         Q{index + 1}
                     </NavLink>
