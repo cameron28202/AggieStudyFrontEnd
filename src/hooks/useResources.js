@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import {getLinksByClassId} from '../api/linkService';
+import {getResourcesByClassId} from '../api/resourceService';
 
-const useLinks = (classId) => {
+const useResources = (classId) => {
 
     // state variables, store the courses, loading status and error messages
-    const [links, setLinks] = useState([]);
+    const [resources, setResources] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -14,26 +14,26 @@ const useLinks = (classId) => {
 
         if (!classId) return;
 
-        const fetchLinks = async () => {
+        const fetchResources = async () => {
             try {
                 // attempt to fetch courses using getResources function
-                const response = await getLinksByClassId(classId);
-                setLinks(response.data);
+                const response = await getResourcesByClassId(classId);
+                setResources(response.data);
 
             }
 
             catch (error) {
-                setError('Error fetching links');
+                setError('Error fetching resources');
             }
             finally {
                 setLoading(false);
             }
         };
 
-        fetchLinks();
+        fetchResources();
     }, [classId]);
 
-    return { links, loading, error };
+    return { resources, loading, error };
 };
 
-export default useLinks;
+export default useResources;

@@ -35,7 +35,7 @@ const CourseItem = ({ course, isSelected, onClick }) => {
                         Exams
                     </NavLink>
                     <NavLink 
-                        to={`/courses/${course.id}/links`} 
+                        to={`/courses/${course.id}/resources`} 
                         className={({ isActive }) => 
                             isActive ? "course-button active" : "course-button"
                         }
