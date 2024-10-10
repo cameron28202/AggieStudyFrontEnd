@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useCourses from "../hooks/useCourses";
 import useCourseSearch from "../hooks/useCourseSearch";
 import CourseList from '../components/Courses/CourseList';
@@ -8,11 +8,7 @@ import './Courses.css';
 const Courses = () => {
     const { courses, loading: coursesLoading, error: coursesError } = useCourses();
     const { query, setQuery, results, loading, error } = useCourseSearch();
-    const [selectedCourseId, setSelectedCourseId] = useState(null);
 
-    const handleCourseClick = (courseId) => {
-        setSelectedCourseId(prevId => prevId === courseId ? null : courseId);
-    };
 
     const displayedCourses = query ? results : courses;
     
@@ -36,9 +32,6 @@ const Courses = () => {
                     <h2 className="courses-title">Available Courses</h2>
                     <CourseList
                         courses={displayedCourses}
-                        query={query}
-                        selectedCourseId={selectedCourseId}
-                        handleCourseClick={handleCourseClick}
                     />
                 </section>
             </div>

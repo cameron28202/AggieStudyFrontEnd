@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import ExamItem from "./ExamItem"
 import './ExamList.css'
 
 const ExamList = ({exams}) => {
@@ -8,14 +8,12 @@ const ExamList = ({exams}) => {
     }
 
     return (
-        <div className="exam-list">
-            {exams.map(exam => (
-                <li key={exam.id} className="exam-list-item">
-                    <NavLink to={`${exam.id}`}>
-                        <h1>{exam.name}</h1>
-                        <p>{exam.description}</p>
-                    </NavLink>
-                </li>
+        <div className="exams-list">
+            {exams.map(exam => ( 
+                <ExamItem
+                    key={exam.id}
+                    exam={exam}
+                />
             ))}
         </div>
     );

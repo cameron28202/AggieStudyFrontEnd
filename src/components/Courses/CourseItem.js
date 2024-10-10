@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import './CourseList.css';
 
-const CourseItem = ({ course, isSelected, onClick }) => {
+const CourseItem = ({ course, onClick }) => {
 
     const [isHovered, setIsHovered] = useState(false);
 

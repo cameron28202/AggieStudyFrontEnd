@@ -1,20 +1,85 @@
-.exam-list {
+.exams-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
     list-style-type: none;
-    padding: 1rem;
-    background-color: #ffffff; 
 }
 
-.exam-list-item {
-    margin-bottom: 0.5rem;
-}
-
-.exam-list-item a {
-    display: block;
-    padding: 1rem;
-    background-color: #f0f0f0;
+.exam-item {
+    position: relative;
+    background-color: #ffffff;
     border-radius: 8px;
-    text-decoration: none;
-    color: #500000;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 15px;
+    height: 120px; 
 }
 
+.exam-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.exam-item-header {
+    background-color: #500000;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.exam-item-name {
+    font-size: 1.1em;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight:bold;
+}
+
+.exam-item-buttoms {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    opacity: 0;
+    transition: opacity 0.5s ease; 
+}
+
+.exam-item:hover .exam-item-buttoms {
+    opacity: 1;
+}
+
+.exam-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    color: rgba(80, 0, 0, 0.9);
+    border: 2px solid transparent;
+}
+
+.exam-button:hover {
+    opacity: 1;
+    border-color: rgba(80, 0, 0, 0.9);
+    border-radius: 8px;
+}
+
+.exam-button.active {
+    text-decoration: underline;
+}
+
+.exams-list .error {
+    color: #ff0000 
+}
