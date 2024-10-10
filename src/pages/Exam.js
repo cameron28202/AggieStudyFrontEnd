@@ -4,8 +4,8 @@ import useQuestions from "../hooks/useQuestions";
 import { useParams } from "react-router-dom";
 import QuestionBar from "../components/Question/QuestionBar";
 import GoBackButton from "../components/Utils/GoBackButton";
-import ClearDataButton from '../components/Utils/RestartExamButton';
 import {clearUserProgress} from "../components/Utils/LocalStorageService";
+import RestartExamButton from '../components/Utils/RestartExamButton';
 
 const Exam = () => {
 
@@ -54,7 +54,7 @@ const Exam = () => {
                     questions={questions}
                     examId={examId}
                 />
-                <ClearDataButton
+                <RestartExamButton
                     handleRestartExam={handleRestartExam}
                 />
                 <GoBackButton/>
