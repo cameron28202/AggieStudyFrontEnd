@@ -19,17 +19,23 @@ const ResultDisplay = ({ submitted, openEnded, isCorrect, setSubmitted, setSelec
         );
     }
     return (
-        answers.map(answer => (
-            <div 
+        <div>
+            {answers.map(answer => (
+                <div 
+                    className="open-question-answer"> 
+                
+                    {parseAndRenderMath(answer.answerText)}
+                </div>
+            ))}
+            <div
                 onClick={() => {
                     setSubmitted(false);
                     setSelectedAnswer(null);
-                }}
-                className="open-question-answer"> 
-            
-                {parseAndRenderMath(answer.answerText)}
+                }} 
+                className='result'>
+                    Try again!
             </div>
-        ))
+        </div>
     );
 }
 

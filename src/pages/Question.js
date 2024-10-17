@@ -18,7 +18,7 @@ const Question = () => {
     const { questions } = useQuestions(examId);
 
 
-    const [openAnswer, setOpenAnswer] = useState(null);
+    const [openAnswer, setOpenAnswer] = useState("");
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [submitted, setSubmitted] = useState(false);
 
@@ -43,7 +43,7 @@ const Question = () => {
     }, [questionId, question]);
 
     const handleSubmit = () => {
-        if(question.isOpenEnded){
+        if(question.openEnded){
             if(openAnswer === "") return;
             saveUserProgress(questionId, openAnswer)
         }

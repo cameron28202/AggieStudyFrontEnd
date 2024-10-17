@@ -6,16 +6,17 @@ import { getUserProgress } from "../Utils/LocalStorageService";
 const QuestionBar = ({questions, examId }) => {
     const { classId } = useParams();
     
-    const getQuestionStatus = (questionId) => {
+    const getQuestionStatus = (question, questionId) => {
         const progress = getUserProgress(questionId);
         if (!progress) return 'unattempted';
+        if (question.openEnded) return 'correct'
         return progress.correct ? 'correct' : 'incorrect';
     };
 
     return (
         <div className="question-bar">
             {questions.map((question, index) => {
-                const status = getQuestionStatus(question.id);
+                const status = getQuestionStatus(question, question.id);
                 return (
                     <NavLink
                         key={question.id}

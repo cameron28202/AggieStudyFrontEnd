@@ -4,6 +4,15 @@
     border-radius: 8px;
     font-size: 1.1rem;
     text-align: center;
+    cursor: pointer;
+    background-color: #ccc;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.result:hover{
+    background-color: #e4e2e2;
+    color: #500000;
 }
 
 .result.correct {
@@ -14,15 +23,11 @@
 .result.correct:hover {
     background-color: #4caf50;
     color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .result.incorrect {
     background-color: #ffebee;
     color: #f44336;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .result.incorrect:hover {
