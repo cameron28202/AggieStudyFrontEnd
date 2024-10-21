@@ -15,10 +15,6 @@ const ExamItem = ({ exam, onClick }) => {
         setShowTimeDropdown(!showTimeDropdown);
     }
 
-    const handleDurationClick = (duration) => {
-        console.log("working!");
-        setShowTimeDropdown(false);
-    }
 
     const handleCloseDropdown = () => {
         setShowTimeDropdown(false);
@@ -68,7 +64,8 @@ const ExamItem = ({ exam, onClick }) => {
             {showTimeDropdown && (
                 <TimedExamDropdown 
                     examDurations={examDurations}
-                    onDurationSelect={handleDurationClick}
+                    examId={exam.id}
+                    courseId={exam.courseId}
                     onClose={handleCloseDropdown}
                 />
             )}

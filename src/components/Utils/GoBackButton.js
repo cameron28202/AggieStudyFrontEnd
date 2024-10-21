@@ -19,8 +19,20 @@ const GoBackButton = () => {
             case 4: // /courses/:classId/exams/:examId
                 navigate(`/courses/${pathParts[1]}/exams`);
                 break;
-            case 6: // /courses/:classId/exams/:examId/questions/:questionId
-                navigate(`/courses/${pathParts[1]}/exams/${pathParts[3]}`);
+            case 5: // /courses/:classId/exams/:examId/timed
+                navigate(`/courses/${pathParts[1]}/exams`);
+                break;
+            case 6:
+                if (pathParts[4] === 'timed') {
+                    // /courses/:classId/exams/:examId/timed/:duration
+                    navigate(`/courses/${pathParts[1]}/exams`);
+                } else {
+                    // /courses/:classId/exams/:examId/questions/:questionId
+                    navigate(`/courses/${pathParts[1]}/exams/${pathParts[3]}`);
+                }
+                break;
+            case 7: // /courses/:classId/exams/:examId/timed/:duration/questions/:questionId
+                navigate(`/courses/${pathParts[1]}/exams/${pathParts[3]}/timed/${pathParts[5]}`);
                 break;
             default:
                 navigate(-1); // Default to browser's back behavior

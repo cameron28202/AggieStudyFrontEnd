@@ -10,6 +10,7 @@ import KaTeXWrapper from './components/Utils/KaTeXWrapper';
 import Resources from './pages/Resources';
 import Footer from './components/Footer/Footer';
 import './App.css'
+import TimedExam from './pages/TimedExam';
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                         <Route path="/courses/:classId/exams" element={<Exams/>}/>
                         <Route path="/courses/:classId/resources" element={<Resources/>}/>
                         <Route path="/courses/:classId/exams/:examId" element={<Exam/>}/>
+                        <Route path="/courses/:classId/exams/:examId/timed/:duration" element={<TimedExam/>}/>
                         <Route path="/courses/:classId/exams/:examId/questions/:questionId" element={<Question/>}/>
                     </Routes>
                 </div>

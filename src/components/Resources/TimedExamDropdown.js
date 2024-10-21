@@ -1,19 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './TimedExamDropdown.css';
 
-const TimedExamDropdown = ({ examDurations, onDurationSelect, onClose }) => {
+const TimedExamDropdown = ({ examDurations, examId, courseId, onClose }) => {
     return (
         <div className="timed-dropdown-overlay">
             <div className="timed-dropdown-content">
                 <h2>Select Exam Duration</h2>
                 {examDurations.map((duration) => (
-                    <button
+                    <NavLink
                         key={duration}
+                        to={`/courses/${courseId}/exams/${examId}/timed/${duration}`}
                         className="duration-button"
-                        onClick={() => onDurationSelect(duration)}
+                        onClick={onClose}
                     >
                         {duration} minutes
-                    </button>
+                    </NavLink>
                 ))}
                 <button className="close-button" onClick={onClose}>
                     Close
