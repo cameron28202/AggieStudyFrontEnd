@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
 import Navbar from './components/Navbar/Navbar';
-import About from "./pages/About";
 import Exam from "./pages/Exam";
 import Exams from "./pages/Exams"
 import Question from "./pages/Question"
@@ -22,7 +21,6 @@ const App = () => {
                         <Route path="/" element={<Home />} />
                         <Route path="/home" element={<Home />} />
                         <Route path="/courses" element={<Courses />} />
-                        <Route path="/about" element={<About/>}/>
                         <Route path="/courses/:classId/exams" element={<Exams/>}/>
                         <Route path="/courses/:classId/resources" element={<Resources/>}/>
                         <Route path="/courses/:classId/exams/:examId" element={<Exam/>}/>

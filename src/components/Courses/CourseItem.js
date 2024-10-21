@@ -19,7 +19,7 @@ const CourseItem = ({ course, onClick }) => {
                         {course.id}
                     </div>
                     <div className="course-item-name">
-                        {course.description}
+                        {course.name}
                     </div>
                 </div>
             )}
