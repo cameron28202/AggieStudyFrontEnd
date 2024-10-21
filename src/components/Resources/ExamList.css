@@ -20,7 +20,6 @@
 
 .exam-item:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
 }
 
 .exam-item-header {
@@ -39,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .exam-item-buttoms {
@@ -58,7 +57,7 @@
     opacity: 1;
 }
 
-.exam-button {
+.exam-button, .timed-exam-button {
     flex: 1;
     display: flex;
     align-items: center;
@@ -68,18 +67,17 @@
     transition: all 0.3s ease;
     color: rgba(80, 0, 0, 0.9);
     border: 2px solid transparent;
+    background: none;
+    cursor: pointer;
 }
 
-.exam-button:hover {
+.exam-button:hover, .timed-exam-button:hover {
     opacity: 1;
     border-color: rgba(80, 0, 0, 0.9);
     border-radius: 8px;
 }
 
-.exam-button.active {
-    text-decoration: underline;
-}
 
 .exams-list .error {
-    color: #ff0000 
+    color: #ff0000;
 }
