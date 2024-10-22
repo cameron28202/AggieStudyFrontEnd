@@ -2,23 +2,18 @@ import React from 'react';
 import './Exam.css';
 import useQuestions from "../hooks/useQuestions";
 import { useParams } from "react-router-dom";
+import Timer from '../components/Utils/Timer';
 import QuestionBar from "../components/Question/QuestionBar";
 import GoBackButton from "../components/Utils/GoBackButton";
-import {clearUserProgress} from "../components/Utils/LocalStorageService";
-import RestartExamButton from '../components/Utils/RestartExamButton';
-
 const TimedExam = () => {
 
 
-    const { examId } = useParams();
+    const { duration, examId } = useParams();
     const { questions, loading, error } = useQuestions(examId);
 
-    const handleRestartExam = () => {
-        clearUserProgress();
-
-        window.location.reload();
+    const onTimeEnd = () => {
+        console.log("hello im done");
     }
-
 
     if (loading) {
         return <div className="loading">
@@ -54,8 +49,9 @@ const TimedExam = () => {
                     questions={questions}
                     examId={examId}
                 />
-                <RestartExamButton
-                    handleRestartExam={handleRestartExam}
+                <Timer
+                    duration={duration}
+                    onTimeEnd={onTimeEnd}
                 />
                 <GoBackButton/>
             </section>
