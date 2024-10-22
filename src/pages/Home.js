@@ -64,11 +64,7 @@ const Home = () => {
                     <p>Study Questions</p>
                 </div>
                 <div className="stat-item">
-                    <h2>0+</h2>
-                    <p>Active Users</p>
-                </div>
-                <div className="stat-item">
-                    <h2>2+</h2>
+                    <h2>8+</h2>
                     <p>Courses Covered</p>
                 </div>
             </section>
