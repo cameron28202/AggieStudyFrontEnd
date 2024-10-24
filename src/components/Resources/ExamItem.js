@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import { NavLink } from 'react-router-dom'
 import './ExamList.css'
-import TimedExamDropdown from './TimedExamDropdown'
+//import TimedExamDropdown from './TimedExamDropdown'
+import InDevelopmentPrompt from "../Utils/InDevelopmentPrompt";
 
 const ExamItem = ({ exam, onClick }) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const [showTimeDropdown, setShowTimeDropdown] = useState(false);
 
-    const examDurations = [30, 60, 90, 120, 150];
+    //const examDurations = [30, 60, 90, 120, 150];
 
     const handleTimedExamClick = (e) => {
         e.preventDefault();
@@ -62,12 +63,18 @@ const ExamItem = ({ exam, onClick }) => {
             </li>
             
             {showTimeDropdown && (
+
+                <InDevelopmentPrompt
+                    onClose={handleCloseDropdown}
+                />
+                /*
                 <TimedExamDropdown 
                     examDurations={examDurations}
                     examId={exam.id}
                     courseId={exam.courseId}
                     onClose={handleCloseDropdown}
                 />
+                */
             )}
         </>
     )
