@@ -11,6 +11,7 @@ import MCQAnswers from "../components/Question/MCQAnswers";
 import ResultDisplay from "../components/Question/ResultDisplay";
 import OpenEndedAnswer from "../components/Question/OpenEndedAnswer";
 import { getUserProgress, saveUserProgress } from "../components/Utils/LocalStorageService";
+//import questionImage from "../components/Question/questionImage"; //importing questionImage
 
 const Question = () => {
     const { courseId, examId, questionId } = useParams();
@@ -91,6 +92,12 @@ const Question = () => {
                         submitted={submitted} 
                     />
                 )}
+
+                {question.questionImage&& ( //question image rendering
+                    <questionImage
+                        imageUrl = {question.imageUrl}
+                    />
+                )}          
 
                 <SubmitButton 
                     handleSubmit={handleSubmit} 
