@@ -1,24 +1,34 @@
 import useCountdown from "../../hooks/useCountdown";
+import QuestionBar from '../Question/QuestionBar';
+import QuestionTimer from '../Question/QuestionBarTimer';
 import React, { useState } from 'react';
 
 const CountdownTimer = ({ duration, onTimeEnd }) => {
-    const [initialDuration, setDuration] = useState(duration); // Set duration in seconds
-    const [isActive, setIsActive] = useState(false);
+    const [initialDuration, setInitialDuration] = useState(duration*60); // Set duration in seconds
+    const [isActive, setIsActive] = useState(true);
+
+    const timeLeft = useCountdown(isActive ? initialDuration: duration*60, () => {
+        //setInitialDuration(duration*60);
+        setIsActive(true);
+    });
 
     const callback = () => {
         alert("Time's up!");
         setIsActive(false); // Reset the timer state
     };
 
-    const timeLeft = useCountdown(isActive ? initialDuration : 0, callback);
-
     const startTimer = () => {
-        setIsActive(true);
+        if(!isActive)
+        {
+            setInitialDuration(duration * 60);
+            setIsActive(true);
+        }
     };
 
     const resetTimer = () => {
         setIsActive(false);
-        setDuration(10); // Reset to initial duration
+        setInitialDuration(duration * 60);
+        formatTime(initialDuration);
     };
 
     const formatTime = (ms) => {
@@ -31,34 +41,15 @@ const CountdownTimer = ({ duration, onTimeEnd }) => {
         <div>
             <h1>Countdown Timer</h1>
             <p>Time Left: {formatTime(timeLeft)}</p>
-            <button onClick={startTimer} disabled={isActive}>
+            {/*<QuestionTimer timeLeft={timeLeft}/>*/}
+            {/* <button onClick={startTimer} disabled={isActive}>
                 Start Timer
             </button>
             <button onClick={resetTimer}>
                 Reset Timer
-            </button>
+            </button> */}
         </div>
     );
 };
 
 export default CountdownTimer;
-/*const Timer = ({ duration, onTimeEnd }) => {
-
-    const time = useCountdown(duration, onTimeEnd);
-    var timer = new Timer();
-timer.start();
-
-timer.addEventListener('secondsUpdated', function (e) {
-    $('#basicUsage').html(timer.getTimeValues().toString());
-});
-
-    return(
-        <div>
-            Time left: {time}
-        </div>
-    );
-
-}
-
-
-export default Timer;*/

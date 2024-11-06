@@ -18,6 +18,7 @@ const ExamItem = ({ exam, onClick }) => {
 
 
     const handleCloseDropdown = () => {
+        //navigate('/timedExam');
         setShowTimeDropdown(false);
     };
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import './Exam.css';
+import './TimedExam.css';
 import useQuestions from "../hooks/useQuestions";
 import { useParams } from "react-router-dom";
-import Timer from '../components/Utils/Timer';
 import QuestionBar from "../components/Question/QuestionBar";
 import GoBackButton from "../components/Utils/GoBackButton";
+import CountdownTimer from '../components/Utils/Timer';
 const TimedExam = () => {
 
-
-    const { duration, examId } = useParams();
+    const { classId, examId, duration } = useParams();
     const { questions, loading, error } = useQuestions(examId);
 
     const onTimeEnd = () => {
@@ -37,7 +37,6 @@ const TimedExam = () => {
             <GoBackButton/>
         </div>;
     }
-
     return (
         <div>
             <section className="exam-container">
@@ -45,11 +44,15 @@ const TimedExam = () => {
                 <p className="exam-description">
                     Select a question below to begin your review. Good luck!
                 </p>
+                {/*<div class="exam-container">
+                    <CountdownTimer className="timer"
+                        duration={duration}
+                        onTimeEnd={onTimeEnd}
+                    />
+                </div>*/}
                 <QuestionBar
                     questions={questions}
                     examId={examId}
-                />
-                <Timer
                     duration={duration}
                     onTimeEnd={onTimeEnd}
                 />

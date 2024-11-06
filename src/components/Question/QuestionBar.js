@@ -1,11 +1,13 @@
 import React from "react";
 import { NavLink, useParams } from "react-router-dom";
 import './QuestionBar.css';
+import QuestionTimer from './QuestionBarTimer'
+import './QuestionBarTimer';
+import CountdownTimer from '../Utils/Timer';
 import { getUserProgress } from "../Utils/LocalStorageService";
 
-const QuestionBar = ({questions, examId }) => {
+const QuestionBar = ({questions, examId, duration, onTimeEnd }) => {
     const { classId } = useParams();
-    
     const getQuestionStatus = (question, questionId) => {
         const progress = getUserProgress(questionId);
         if (!progress) return 'unattempted';
@@ -14,23 +16,31 @@ const QuestionBar = ({questions, examId }) => {
     };
 
     return (
-        <div className="question-bar">
-            {questions.map((question, index) => {
-                const status = getQuestionStatus(question, question.id);
-                return (
-                    <NavLink
-                        key={question.id}
-                        to={`/courses/${classId}/exams/${examId}/questions/${question.id}`}
-                        className={({ isActive }) => 
-                            `question-link 
-                            ${isActive ? "question-link-active" : ""}
-                            ${status}`
-                        }
-                    >
-                        Q{index + 1}
-                    </NavLink>
-                );
-            })}
+        <div>
+            <div class="exam-container">
+                <CountdownTimer className="timer"
+                    duration={duration}
+                    onTimeEnd={onTimeEnd}
+                />
+            </div>
+            <div className="question-bar">
+                {questions.map((question, index) => {
+                    const status = getQuestionStatus(question, question.id);
+                    return (
+                        <NavLink
+                            key={question.id}
+                            to={`/courses/${classId}/exams/${examId}/questions/${question.id}`}
+                            className={({ isActive }) => 
+                                `question-link 
+                                ${isActive ? "question-link-active" : ""}
+                                ${status}`
+                            }
+                        >
+                            Q{index + 1}
+                        </NavLink>
+                    );
+                })}
+            </div>
         </div>
     );
 };
