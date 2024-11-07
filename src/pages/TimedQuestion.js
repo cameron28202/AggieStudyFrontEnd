@@ -119,7 +119,6 @@ const TimedQuestion = () => {
                     examId={examId}
                     courseId={courseId}
                     duration={duration}
-                    onTimeEnd={onTimeEnd}
                 />
                 <GoBackButton/>
             </section>

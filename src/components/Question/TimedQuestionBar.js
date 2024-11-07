@@ -4,7 +4,7 @@ import './TimedQuestionBar.css';
 import CountdownTimer from '../Utils/Timer';
 import { getUserProgress } from "../Utils/LocalStorageService";
 
-const TimedQuestionBar = ({questions, examId, duration, onTimeEnd }) => {
+const TimedQuestionBar = ({questions, examId, duration}) => {
     const { classId } = useParams();
     const getQuestionStatus = (question, questionId) => {
         const progress = getUserProgress(questionId);
@@ -18,7 +18,7 @@ const TimedQuestionBar = ({questions, examId, duration, onTimeEnd }) => {
             <div class="exam-container">
                 <CountdownTimer className="timer"
                     duration={duration}
-                    onTimeEnd={onTimeEnd}
+                    onTimeEnd={console.log("hello im done")}
                 />
             </div>
             <div className="question-bar">
@@ -27,7 +27,7 @@ const TimedQuestionBar = ({questions, examId, duration, onTimeEnd }) => {
                     return (
                         <NavLink
                             key={question.id}
-                            to={`/courses/${classId}/exams/${examId}/questions/${question.id}/timed/${duration}/end/${onTimeEnd}`}
+                            to={`/courses/${classId}/exams/${examId}/questions/${question.id}/timed/${duration}`}
                             className={({ isActive }) => 
                                 `question-link 
                                 ${isActive ? "question-link-active" : ""}

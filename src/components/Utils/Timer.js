@@ -8,10 +8,8 @@ const CountdownTimer = ({ duration, onTimeEnd }) => {
     const [isActive, setIsActive] = useState(true);
     
     const timeLeft = useCountdown(isActive ? initialDuration: duration*60, () => {
-        //setInitialDuration(duration*60);
         setIsActive(true);
     });
-    //console.log(timeLeft/60000);
 
     const callback = () => {
         alert("Time's up!");
