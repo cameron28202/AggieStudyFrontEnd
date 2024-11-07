@@ -46,18 +46,6 @@
     color: #fff;
 }
 
-.question-link.correct {
-    background-color: #4caf50;
-    color: #fff;
-    border-color: #4caf50;
-}
-
-.question-link.incorrect {
-    background-color: #f44336;
-    color: #fff;
-    border-color: #f44336;
-}
-
 .question-link-active.correct,
 .question-link-active.incorrect {
     background-color: #500000;
