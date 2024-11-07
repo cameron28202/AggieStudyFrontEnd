@@ -31,8 +31,18 @@ const GoBackButton = () => {
                     navigate(`/courses/${pathParts[1]}/exams/${pathParts[3]}`);
                 }
                 break;
-            case 7: // /courses/:classId/exams/:examId/timed/:duration/questions/:questionId
-                navigate(`/courses/${pathParts[1]}/exams/${pathParts[3]}/timed/${pathParts[5]}`);
+            case 7:
+                if (pathParts[4] === 'questions' && pathParts[6] === 'timed') {
+                    navigate(`/courses/${pathParts[1]}/exams`);
+                } else if (pathParts[4] === 'timed') {
+                    navigate(`/courses/${pathParts[1]}/exams`);
+                }
+                break;
+            case 8:
+                if (pathParts[4] === 'questions' && pathParts[6] === 'timed') {
+                    // /courses/MATH152/exams/MATH152-F22-2A/questions/1b54f02e-dc8b-4f17-b50c-ea30bada039b/timed/60
+                    navigate(`/courses/${pathParts[1]}/exams`);
+                }
                 break;
             default:
                 navigate(-1); // Default to browser's back behavior
