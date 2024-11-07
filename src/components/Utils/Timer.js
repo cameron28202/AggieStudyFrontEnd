@@ -6,11 +6,12 @@ import "../Question/TimedQuestionBar.css";
 const CountdownTimer = ({ duration, onTimeEnd }) => {
     const [initialDuration, setInitialDuration] = useState(duration*60); // Set duration in seconds
     const [isActive, setIsActive] = useState(true);
-
+    
     const timeLeft = useCountdown(isActive ? initialDuration: duration*60, () => {
         //setInitialDuration(duration*60);
         setIsActive(true);
     });
+    //console.log(timeLeft/60000);
 
     const callback = () => {
         alert("Time's up!");
@@ -33,7 +34,8 @@ const CountdownTimer = ({ duration, onTimeEnd }) => {
 
     const formatTime = (ms) => {
         const seconds = Math.floor((ms / 1000) % 60);
-        const minutes = Math.floor((ms / (1000 * 60)) % 60);
+        console.log(seconds);
+        const minutes = Math.floor((ms/60000));
         return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
     };
 
@@ -41,13 +43,6 @@ const CountdownTimer = ({ duration, onTimeEnd }) => {
         <div className="timer">
             <h1>Countdown Timer</h1>
             <p>Time Left: {formatTime(timeLeft)}</p>
-            {/*<QuestionTimer timeLeft={timeLeft}/>*/}
-            {/* <button onClick={startTimer} disabled={isActive}>
-                Start Timer
-            </button>
-            <button onClick={resetTimer}>
-                Reset Timer
-            </button> */}
         </div>
     );
 };

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import TimedQuestionBar from "../components/Question/TimedQuestionBar";
 import GoBackButton from "../components/Utils/GoBackButton";
 import CountdownTimer from '../components/Utils/Timer';
-import { TimerProvider } from '../components/Utils/TimerContext';
+
 const TimedExam = () => {
 
     const { classId, examId, duration } = useParams();

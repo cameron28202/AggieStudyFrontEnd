@@ -12,7 +12,7 @@ const TimedQuestionBar = ({questions, examId, duration, onTimeEnd }) => {
         if (question.openEnded) return 'correct'
         return progress.correct ? 'correct' : 'incorrect';
     };
-
+    
     return (
         <div class="container">
             <div class="exam-container">

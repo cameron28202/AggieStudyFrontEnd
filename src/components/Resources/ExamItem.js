@@ -18,7 +18,6 @@ const ExamItem = ({ exam, onClick }) => {
 
 
     const handleCloseDropdown = () => {
-        //navigate('/timedExam');
         setShowTimeDropdown(false);
     };
 
@@ -55,7 +54,6 @@ const ExamItem = ({ exam, onClick }) => {
                         <button 
                             onClick = {handleTimedExamClick}
                             className="timed-exam-button"
-
                         >
                             Timed Exam
                         </button>
@@ -64,7 +62,6 @@ const ExamItem = ({ exam, onClick }) => {
             </li>
             
             {showTimeDropdown && (
-
                 /*<InDevelopmentPrompt
                     onClose={handleCloseDropdown}
                 />*/
