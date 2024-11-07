@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Exam from "./pages/Exam";
 import Exams from "./pages/Exams"
 import Question from "./pages/Question"
+import TimedQuestion from "./pages/TimedQuestion"
 import KaTeXWrapper from './components/Utils/KaTeXWrapper';
 import Resources from './pages/Resources';
 import Footer from './components/Footer/Footer';
@@ -27,6 +28,7 @@ const App = () => {
                         <Route path="/courses/:classId/exams/:examId" element={<Exam/>}/>
                         <Route path="/courses/:classId/exams/:examId/timed/:duration" element={<TimedExam/>}/>
                         <Route path="/courses/:classId/exams/:examId/questions/:questionId" element={<Question/>}/>
+                        <Route path="/courses/:classId/exams/:examId/questions/:questionId/timed/:duration/end/:onTimeEnd" element={<TimedQuestion/>}/>
                         <Route path="/timedExam" element={<TimedExam/>}/>
                     </Routes>
                 </div>

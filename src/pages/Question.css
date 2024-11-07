@@ -30,6 +30,13 @@
     }
   }
 
+.exam-container {
+    width: 90%;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10px;
+}
+
 .question-container {
     max-width: 800px;
     margin: 0 auto;

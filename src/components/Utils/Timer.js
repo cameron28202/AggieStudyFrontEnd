@@ -1,7 +1,7 @@
 import useCountdown from "../../hooks/useCountdown";
 import QuestionBar from '../Question/QuestionBar';
-import QuestionTimer from '../Question/QuestionBarTimer';
 import React, { useState } from 'react';
+import "../Question/TimedQuestionBar.css";
 
 const CountdownTimer = ({ duration, onTimeEnd }) => {
     const [initialDuration, setInitialDuration] = useState(duration*60); // Set duration in seconds
@@ -38,7 +38,7 @@ const CountdownTimer = ({ duration, onTimeEnd }) => {
     };
 
     return (
-        <div>
+        <div className="timer">
             <h1>Countdown Timer</h1>
             <p>Time Left: {formatTime(timeLeft)}</p>
             {/*<QuestionTimer timeLeft={timeLeft}/>*/}

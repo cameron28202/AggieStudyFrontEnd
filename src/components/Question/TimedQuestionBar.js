@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink, useParams } from "react-router-dom";
-import './QuestionBar.css';
+import './TimedQuestionBar.css';
 import CountdownTimer from '../Utils/Timer';
 import { getUserProgress } from "../Utils/LocalStorageService";
 
-const QuestionBar = ({questions, examId}) => {
+const TimedQuestionBar = ({questions, examId, duration, onTimeEnd }) => {
     const { classId } = useParams();
     const getQuestionStatus = (question, questionId) => {
         const progress = getUserProgress(questionId);
@@ -14,14 +14,20 @@ const QuestionBar = ({questions, examId}) => {
     };
 
     return (
-        <div>
+        <div class="container">
+            <div class="exam-container">
+                <CountdownTimer className="timer"
+                    duration={duration}
+                    onTimeEnd={onTimeEnd}
+                />
+            </div>
             <div className="question-bar">
                 {questions.map((question, index) => {
                     const status = getQuestionStatus(question, question.id);
                     return (
                         <NavLink
                             key={question.id}
-                            to={`/courses/${classId}/exams/${examId}/questions/${question.id}`}
+                            to={`/courses/${classId}/exams/${examId}/questions/${question.id}/timed/${duration}/end/${onTimeEnd}`}
                             className={({ isActive }) => 
                                 `question-link 
                                 ${isActive ? "question-link-active" : ""}
@@ -37,4 +43,4 @@ const QuestionBar = ({questions, examId}) => {
     );
 };
 
-export default QuestionBar;
+export default TimedQuestionBar;

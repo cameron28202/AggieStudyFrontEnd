@@ -1,11 +1,11 @@
 import React from 'react';
 import './Exam.css';
-import './TimedExam.css';
 import useQuestions from "../hooks/useQuestions";
 import { useParams } from "react-router-dom";
-import QuestionBar from "../components/Question/QuestionBar";
+import TimedQuestionBar from "../components/Question/TimedQuestionBar";
 import GoBackButton from "../components/Utils/GoBackButton";
 import CountdownTimer from '../components/Utils/Timer';
+import { TimerProvider } from '../components/Utils/TimerContext';
 const TimedExam = () => {
 
     const { classId, examId, duration } = useParams();
@@ -39,27 +39,20 @@ const TimedExam = () => {
     }
     return (
         <div>
-            <section className="exam-container">
-                <h1 className="exam-title">Exam Review</h1>
-                <p className="exam-description">
-                    Select a question below to begin your review. Good luck!
-                </p>
-                {/*<div class="exam-container">
-                    <CountdownTimer className="timer"
+                <section className="exam-container">
+                    <h1 className="exam-title">Exam Review</h1>
+                    <p className="exam-description">
+                        Select a question below to begin your review. Good luck!
+                    </p>
+                    <TimedQuestionBar className="timer"
+                        questions={questions}
+                        examId={examId}
                         duration={duration}
                         onTimeEnd={onTimeEnd}
                     />
-                </div>*/}
-                <QuestionBar
-                    questions={questions}
-                    examId={examId}
-                    duration={duration}
-                    onTimeEnd={onTimeEnd}
-                />
-                <GoBackButton/>
-            </section>
+                    <GoBackButton/>
+                </section>
         </div>
-
     );
 };
 
