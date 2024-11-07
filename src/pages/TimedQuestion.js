@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useQuestion from "../hooks/useQuestion";
 import useQuestions from "../hooks/useQuestions";
@@ -6,56 +6,19 @@ import TimedQuestionBar from "../components/Question/TimedQuestionBar";
 import GoBackButton from "../components/Utils/GoBackButton";
 import parseAndRenderMath from "../components/Utils/MathParser";
 import './Question.css';
-import SubmitButton from "../components/Question/SubmitButton";
-import CountdownTimer from '../components/Utils/Timer';
 import MCQAnswers from "../components/Question/MCQAnswers";
-import ResultDisplay from "../components/Question/ResultDisplay";
 import OpenEndedAnswer from "../components/Question/OpenEndedAnswer";
-import { getUserProgress, saveUserProgress } from "../components/Utils/LocalStorageService";
-//import questionImage from "../components/Question/questionImage"; //importing questionImage
 
 const TimedQuestion = () => {
-    const { courseId, examId, questionId, duration, onTimeEnd } = useParams();
+    const { courseId, examId, questionId, duration } = useParams();
     const { question, loading, error } = useQuestion(questionId);
     const { questions } = useQuestions(examId);
 
 
     const [openAnswer, setOpenAnswer] = useState("");
     const [selectedAnswer, setSelectedAnswer] = useState(null);
-    const [submitted, setSubmitted] = useState(false);
 
-    useEffect(() => {
-        if(question){
-            const existingData = getUserProgress(questionId);
-            if(existingData){
-                if(question.openEnded){
-                    setOpenAnswer(existingData);
-                } 
-                else{
-                    setSelectedAnswer(existingData);
-                }
-                setSubmitted(true);
-            } 
-            else{
-                setSelectedAnswer(null);
-                setOpenAnswer("");
-                setSubmitted(false);
-            }
-        }
-    }, [questionId, question]);
 
-    const handleSubmit = () => {
-        if(question.openEnded){
-            if(openAnswer === "") return;
-            saveUserProgress(questionId, openAnswer)
-        }
-        else{
-            if (selectedAnswer === null) return;
-            saveUserProgress(questionId, selectedAnswer)
-        }
-
-        setSubmitted(true);
-    };
 
 
     if(loading){
@@ -82,7 +45,6 @@ const TimedQuestion = () => {
                     <OpenEndedAnswer 
                         openAnswer={openAnswer} 
                         setOpenAnswer={setOpenAnswer} 
-                        submitted={submitted} 
                     />
 
                 ): (
@@ -90,29 +52,16 @@ const TimedQuestion = () => {
                         answers={question.answers} 
                         selectedAnswer={selectedAnswer} 
                         setSelectedAnswer={setSelectedAnswer} 
-                        submitted={submitted} 
                     />
                 )}
 
-                {question.questionImage&& ( //question image rendering
+                {question.questionImage&& (
                     <questionImage
                         imageUrl = {question.imageUrl}
                     />
                 )}          
 
-                <SubmitButton 
-                    handleSubmit={handleSubmit} 
-                    disabled={(question.openEnded ? openAnswer === "" : selectedAnswer === null) || submitted} 
-                />
 
-                <ResultDisplay
-                    submitted={submitted} 
-                    openEnded={question.openEnded}
-                    isCorrect={selectedAnswer?.correct} 
-                    setSubmitted={setSubmitted} 
-                    setSelectedAnswer={setSelectedAnswer} 
-                    answers={question.answers} 
-                />
                 <TimedQuestionBar 
                     currentQuestion={questionId} 
                     questions={questions} 

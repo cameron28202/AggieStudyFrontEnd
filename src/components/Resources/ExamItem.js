@@ -1,25 +1,27 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { NavLink } from 'react-router-dom'
 import './ExamList.css'
 import TimedExamDropdown from './TimedExamDropdown'
-import InDevelopmentPrompt from "../Utils/InDevelopmentPrompt";
+import useQuestions from "../../hooks/useQuestions";
 
 const ExamItem = ({ exam, onClick }) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const [showTimeDropdown, setShowTimeDropdown] = useState(false);
-
     const examDurations = [30, 60, 90, 120, 150];
+    const { questions } = useQuestions(exam.id);
+    const [firstQuestionId, setFirstQuestionId] = useState(null);
 
     const handleTimedExamClick = (e) => {
         e.preventDefault();
         setShowTimeDropdown(!showTimeDropdown);
     }
 
-
-    const handleCloseDropdown = () => {
-        setShowTimeDropdown(false);
-    };
+    useEffect(() => {
+        if (questions && questions.length > 0) {
+            setFirstQuestionId(questions[0].id);
+        }
+    }, [questions]);
 
     return (
         <>
@@ -47,7 +49,7 @@ const ExamItem = ({ exam, onClick }) => {
                             to={`/courses/${exam.courseId}/exams/${exam.id}`}
                             className="exam-button"
                         >
-                            Non-Timed Exam
+                            Practice Mode
                         </NavLink>
 
 
@@ -55,7 +57,7 @@ const ExamItem = ({ exam, onClick }) => {
                             onClick = {handleTimedExamClick}
                             className="timed-exam-button"
                         >
-                            Timed Exam
+                            Timed Mode
                         </button>
                     </div>
                 )}
@@ -65,11 +67,12 @@ const ExamItem = ({ exam, onClick }) => {
                 /*<InDevelopmentPrompt
                     onClose={handleCloseDropdown}
                 />*/
-                <TimedExamDropdown 
+                <TimedExamDropdown
                     examDurations={examDurations}
                     examId={exam.id}
                     courseId={exam.courseId}
-                    onClose={handleCloseDropdown}
+                    firstQuestionId={firstQuestionId}
+                    onClose={() => setShowTimeDropdown(false)}
                 />
             )}
         </>
