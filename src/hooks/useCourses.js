@@ -17,7 +17,7 @@ const useCourses = () => {
                 setCourses(response.data);
             }
             catch (error) {
-                setError('Error fetching courses');
+                setError('AggieStudy is currently down for development. Stay tuned for future updates!');
             }
             finally {
                 setLoading(false);
